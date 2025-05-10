@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ignacio's Portfolio - Mobile Apps</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.32/dist/codicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Courier New', monospace;
+        display: flex;
+        height: 100vh;
+        background-color: #1e1e1e;
+        color: #dcdcdc;
+      }
+      #sidebar {
+        min-width: 60px;
+        background-color: #333;
+        padding-top: 20px;
+        text-align: center;
+        height: 100%;
+      }
+      #sidebar img {
+        margin-top: -8px;
+        width: 30px;
+        height: 30px;
+        margin-bottom: 20px;
+      }
+      #sidebar a {
+        padding: 10px;
+        display: block;
+        color: #dcdcdc;
+        margin: 10px 0;
+        text-decoration: none;
+      }
+      #sidebar a:hover,
+      #sidebar a.selected {
+        background-color: #444;
+      }
+      #sidebar .explorer {
+        margin-top: 20px;
+        padding: 0 10px;
+      }
+      #sidebar .explorer .file {
+        margin: 5px 0;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      #editor {
+        flex-grow: 1;
+        background-color: #252526;
+        display: flex;
+        flex-direction: column;
+      }
+      #header {
+        background-color: #333;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #444;
+      }
+      #header h1 {
+        font-size: 18px;
+        color: #dcdcdc;
+      }
+
+      #header h1 span {
+        font-weight: 200;
+      }
+
+      @media (max-width: 768px) {
+        #header h1 span {
+          display: block;
+        }
+      }
+      #header .tabs {
+        display: flex;
+        white-space: nowrap;
+      }
+      #header .tab {
+        margin-left: 10px;
+        padding: 5px 10px;
+        background-color: #444;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #ffffff;
+      }
+
+      .tab a {
+        text-decoration: none;
+        color: #ffffff;
+      }
+
+      #header .tab:hover {
+        background-color: #555;
+      }
+      #code-editor {
+        background-color: #1e1e1e;
+        font-size: 16px;
+        line-height: 1.5;
+        padding: 20px;
+
+        color: #dcdcdc;
+        overflow-y: auto;
+      }
+      #footer {
+        width: 200px;
+        padding: 10px 20px;
+        color: #dcdcdc;
+        text-align: center;
+        border-left: 1px solid #444;
+      }
+
+      @media (max-width: 768px) {
+        #footer {
+          display: none;
+        }
+      }
+      .app {
+        padding-bottom: 20px;
+      }
+
+      .app h2 {
+        margin-top: 0;
+        display: inline-block;
+      }
+      .app p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .app ul {
+        list-style-type: none;
+        padding: 0;
+        padding-bottom: 20px;
+      }
+      .app li {
+        margin-bottom: 10px;
+      }
+      .app a {
+        padding: 0;
+        line-height: 0;
+        background-color: transparent;
+        font-size: 0;
+      }
+
+      .app img {
+        width: 120px;
+        height: auto;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+
+      .app-container {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          150px
+        ); /* Two columns of 150px */
+        gap: 0px;
+        list-style-type: none; /* Removes bullet points from the list */
+        padding: 0;
+        width: 300px;
+      }
+
+      .app-item {
+        min-width: 150px;
+      }
+
+      .app-description {
+        padding-bottom: 20px;
+      }
+
+      .github-icon {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        margin-right: 0px;
+      }
+
+      .icon-bigger {
+        font-size: 25px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sidebar">
+      <img
+        class="vscode-icon"
+        src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg"
+        alt="VS Code Icon"
+      />
+      <a class="selected" title="Explorer">
+        <div class="codicon icon-bigger codicon-files"></div>
+      </a>
+      <a title="Search">
+        <div class="codicon icon-bigger codicon-search"></div>
+      </a>
+      <a title="Extensions">
+        <div class="codicon icon-bigger codicon-extensions"></div>
+      </a>
+      <a title="Debug">
+        <div class="codicon icon-bigger codicon-debug-alt"></div>
+      </a>
+    </div>
+
+    <div id="editor">
+      <div id="header">
+        <h1>Ignacio's Portfolio <span>Mobile Apps</span></h1>
+        <div class="tabs">
+          <div class="tab">
+            <a href="https://github.com/jicninja" target="_blank">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                alt="GitHub Icon"
+                class="github-icon"
+              />
+              Github
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="code-editor">
+        <div class="container">
+          <section>
+            <div class="app">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9d/85/b1/9d85b1db-10bd-5380-70aa-7a9ff2c6b0ae/AppIcon-0-0-1x_U007ephone-0-85-220.png/460x0w.webp"
+                alt="Moves by Madeline App Icon"
+                style="
+                  width: 100px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  display: inline-block;
+                "
+              />
+              <h2>Moves by Madeline</h2>
+              <p class="app-description">
+                Moves is a highly rated fitness app that has earned the trust of
+                thousands, boasting over 5,000 reviews with an impressive
+                average rating of 4.9 out of 5. It offers expertly designed
+                workout programs tailored to various goals and fitness levels,
+                including strength training, endurance, prenatal and postpartum
+                fitness, and mobility. With structured guidance developed by
+                professionals like physical therapists and strength coaches,
+                Moves helps users eliminate guesswork, stay consistent, and
+                train effectively—whether at home, in the gym, or on the go.
+              </p>
+              <ul>
+                <li>
+                  <a
+                    class="apple"
+                    href="https://apps.apple.com/us/app/moves-by-madeline/id1363272340"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="App Store"
+                    />Apple Store</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="google"
+                    href="https://play.google.com/store/apps/details?id=com.madelinemoves.train.store&hl=es_AR"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Google Play"
+                    />Google Play</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="app">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/28/4a/03284a5c-f633-4dee-880d-51fe3d9d9749/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/460x0w.webp"
+                alt="Equinox+ App Icon"
+                style="
+                  width: 100px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  display: inline-block;
+                "
+              />
+              <h2>Equinox+</h2>
+              <p class="app-description">
+                Equinox+ is a comprehensive digital fitness platform that offers
+                users access to a variety of live and on-demand classes from
+                renowned fitness brands, including Equinox, SoulCycle, PURE
+                Yoga, Precision Run, [solidcore], TB12, and HeadStrong. The app
+                features immersive, cinematic classes led by expert instructors,
+                designed to provide a high-quality workout experience accessible
+                anytime and anywhere. Additionally, Equinox+ integrates with
+                health and fitness trackers like Apple HealthKit and WHOOP,
+                allowing users to monitor their progress and receive
+                personalized workout recommendations.
+              </p>
+              <ul>
+                <li>
+                  <a
+                    class="apple"
+                    href="https://apps.apple.com/us/app/equinox/id318815572"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="App Store"
+                    />Apple Store</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="google"
+                    href="https://play.google.com/store/apps/details?id=com.equinoxfitness.equinox&hl=es_AR"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Google Play"
+                    />Google Play</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="app">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/a8/1c/6d/a81c6d17-b567-b94d-65ee-4b5de03f7077/AppIcon-1x_U007emarketing-0-7-0-85-220.png/460x0w.webp"
+                alt="Hero Financials App Icon"
+                style="
+                  width: 100px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  display: inline-block;
+                "
+              />
+              <h2>Hero Financials</h2>
+              <p class="app-description">
+                Hero Financials is a Canadian financial service aimed at helping
+                parents teach their children financial literacy and money
+                management skills. It offers a product called the SideKick Card,
+                a Mastercard that allows kids and teens to make purchases both
+                in-store and online. Parents maintain control by allocating
+                funds to specific spending categories—such as general, living
+                expenses, eating out, travel, shopping, and fun—and can monitor
+                and manage their child's spending through the Hero app. The
+                service includes features like real-time notifications, the
+                ability to freeze and unfreeze the card, recurring allowances,
+                and savings tools like the Vault and Round-up, all designed to
+                promote responsible financial habits in children.
+              </p>
+              <ul>
+                <li>
+                  <a
+                    class="google"
+                    href="https://play.google.com/store/apps/details?id=com.herofinancials&hl=es_AR"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Google Play"
+                    />Google Play</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="apple"
+                    href="https://apps.apple.com/ar/app/hero-financials/id6444052139"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="App Store"
+                    />Apple Store</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="app">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/83/c7/09/83c7092e-fae5-91ab-ba65-e95c8f859c75/AppIcon-0-0-1x_U007epad-0-1-85-220.png/460x0w.webp"
+                alt="Behave Health App Icon"
+                style="
+                  width: 100px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  display: inline-block;
+                "
+              />
+              <h2>Behave Health (Staff and Portal)</h2>
+              <p class="app-description">
+                Behave Health offers two primary apps tailored to behavioral
+                health organizations: the Staff App and the Portal App. The
+                Staff App equips clinicians and administrative staff with mobile
+                access to key operational tools, including real-time scheduling,
+                task management, patient records, admissions, contact tracking,
+                and drug testing—essentially mirroring the functionality of the
+                desktop platform to support staff on the go. The Portal App is
+                client-facing and designed to enhance the patient experience by
+                allowing clients to check in, complete forms, view their
+                schedule, communicate with staff, and manage their treatment
+                journey—all from their mobile device. Together, these apps
+                streamline workflows and improve engagement across the
+                behavioral health care process.
+              </p>
+              <ul class="app-container">
+                <li class="app-item">
+                  <h3>Portal App</h3>
+                  <a
+                    class="apple"
+                    href="https://apps.apple.com/us/app/behave-portal/id1535825014"
+                    target="_blank"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="App Store"
+                    />
+                    Portal App - Apple Store
+                  </a>
+                </li>
+                <li class="app-item">
+                  <h3>Staff App</h3>
+
+                  <a
+                    class="apple"
+                    href="https://apps.apple.com/us/app/behave-staff/id1536220851"
+                    target="_blank"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="App Store"
+                    />
+                    Staff App - Apple Store
+                  </a>
+                </li>
+                <li class="app-item">
+                  <a
+                    class="google"
+                    href="https://play.google.com/store/apps/details?id=com.behavehealth.ehr"
+                    target="_blank"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Google Play"
+                    />
+                    Staff App - Google Play
+                  </a>
+                </li>
+                <li class="app-item">
+                  <a
+                    class="google"
+                    href="https://play.google.com/store/apps/details?id=com.behavehealth.clientportal"
+                    target="_blank"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Google Play"
+                    />
+                    Portal App - Google Play
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="app">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcP91SWZ1sZ-MMyD4zvdQmkRhny_yJtsQsVQ&s"
+                alt="Victoria Royals App Icon"
+                style="
+                  width: 100px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  display: inline-block;
+                "
+              />
+              <h2>Victoria Royals</h2>
+              <p class="app-description">
+                The Victoria Royals app is a comprehensive mobile platform for
+                fans of the Victoria Royals hockey team and attendees of events
+                at the Save-On-Foods Memorial Centre. It offers news, social
+                media updates, photos, videos, live game scoring, player stats,
+                schedules, and standings. Users can buy tickets, order
+                concessions or merchandise, and access promotions and exclusive
+                offers. The app also features information on upcoming concerts
+                and events at the arena, creating an all-in-one experience for
+                staying connected with both the team and venue year-round.
+              </p>
+              <ul>
+                <li>
+                  <a
+                    class="apple"
+                    href="https://apps.apple.com/cl/app/victoria-royals/id1177698477"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="App Store"
+                    />Apple Store</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="app">
+              <img
+                src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cb/83/d0/cb83d03e-9764-2cee-170c-cdd54463d010/AppIcon-0-0-1x_U007epad-0-1-85-220.png/460x0w.webp"
+                alt="Officepools App Icon"
+                style="
+                  width: 100px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  display: inline-block;
+                "
+              />
+              <h2>Officepools</h2>
+              <p class="app-description">
+                Officepools is a platform that allows users to create and manage
+                fantasy sports pools, including hockey, football, golf,
+                entertainment, curling, and soccer. The platform offers various
+                pool types such as Box, Draft, and Open pools, providing
+                flexibility in customization. Features include real-time
+                scoring, player news updates, and the ability to manage multiple
+                pools and teams seamlessly. The Officepools mobile app enhances
+                the experience by allowing users to track their team's
+                performance, receive notifications, and access both active and
+                archived pools. The app has received positive feedback, holding
+                a 4.3 out of 5 rating based on over 4,600 reviews on the Apple
+                App Store. Users commend its user-friendly interface and
+                comprehensive features, with one noting it offers "complete
+                control and complete ability to customize your league." Overall,
+                Officepools provides a robust platform for fantasy sports
+                enthusiasts seeking an engaging and customizable experience.
+              </p>
+              <ul>
+                <li>
+                  <a
+                    class="apple"
+                    href="https://apps.apple.com/ca/app/officepools-sports-pools/id1215759347"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                      alt="App Store"
+                    />Apple Store</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="google"
+                    href="https://play.google.com/store/apps/details?id=com.officepoolsmobileapp&hl=es_AR"
+                    target="_blank"
+                    ><img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Google Play"
+                    />Google Play</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+  </body>
+</html>
